@@ -42,7 +42,7 @@ def launchServer():
             content_len = int(self.headers.get('Content-Length'))
             post_body = self.rfile.read(content_len).decode()
             if len(post_body) <= 200:
-                print("Received: " + post_body)
+                print("Received: " + post_body.removesuffix(", "))
 
     server = HTTPServer(("", 5000), requestHandler)
     server.serve_forever()
